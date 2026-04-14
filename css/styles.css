@@ -289,7 +289,7 @@ address {
   .products-wrap { grid-template-columns: 1fr; }
   .cart { position: static; }
 }
-
+/* Carrusel decorativo */
 .carousel {
   margin: 10px auto;
   width: 100%;
