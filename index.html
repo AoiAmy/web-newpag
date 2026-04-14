@@ -20,18 +20,11 @@
 				</a>
 			</div>
 			<nav role="navigation" aria-label="Menú principal">
-				<ul class="nav-list">
-					<li class="nav-item has-menu">
-						<button id="productos-button" class="nav-button" aria-haspopup="true" aria-expanded="false" aria-controls="productos-menu">Productos</button>
-						<ul id="productos-menu" class="dropdown-menu" role="menu" aria-labelledby="productos-button" hidden>
-							<li role="none"><a role="menuitem" href="productos.html">Todos los productos</a></li>
-							<li role="none"><a role="menuitem" href="productos.html#shampoo">Shampoo</a></li>
-							<li role="none"><a role="menuitem" href="productos.html#acondicionadores">Acondicionadores</a></li>
-						</ul>
-					</li>
-					<li class="nav-item"><a href="#promociones">Promociones</a></li>
-					<li class="nav-item"><a href="#beneficios">Beneficios</a></li>
-					<li class="nav-item"><a href="#contacto">Contacto</a></li>
+				<ul>
+					<li><a href="productos.html">Productos</a></li>
+					<li><a href="#promociones">Promociones</a></li>
+					<li><a href="#beneficios">Beneficios</a></li>
+					<li><a href="#contacto">Contacto</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -144,46 +137,6 @@
 			<p>© <span id="year">2026</span> Mimi Store — Todos los derechos reservados.</p>
 		</div>
 	</footer>
-
-	<script>
-	// Accessible dropdown for Productos
-	(function(){
-	  const btn = document.getElementById('productos-button');
-	  const menu = document.getElementById('productos-menu');
-	  if (!btn || !menu) return;
-	  const toggle = (show) => {
-	    const isOpen = typeof show === 'boolean' ? show : menu.hasAttribute('hidden') ? true : false;
-	    if (isOpen) {
-	      menu.removeAttribute('hidden');
-	      btn.setAttribute('aria-expanded','true');
-	      // focus first item
-	      const first = menu.querySelector('[role="menuitem"]');
-	      if (first) first.focus();
-	    } else {
-	      menu.setAttribute('hidden','');
-	      btn.setAttribute('aria-expanded','false');
-	      btn.focus();
-	    }
-	  };
-	  btn.addEventListener('click', (e) => { e.preventDefault(); toggle(); });
-	  // close on outside click
-	  document.addEventListener('click', (e)=>{
-	    if (!btn.contains(e.target) && !menu.contains(e.target)) toggle(false);
-	  });
-	  // keyboard support
-	  btn.addEventListener('keydown', (e)=>{
-	    if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(true); }
-	    if (e.key === 'Escape') toggle(false);
-	  });
-	  menu.addEventListener('keydown', (e)=>{
-	    const items = Array.from(menu.querySelectorAll('[role="menuitem"]'));
-	    const idx = items.indexOf(document.activeElement);
-	    if (e.key === 'Escape') { toggle(false); }
-	    else if (e.key === 'ArrowDown') { e.preventDefault(); const next = items[(idx+1)%items.length]; if(next) next.focus(); }
-	    else if (e.key === 'ArrowUp') { e.preventDefault(); const prev = items[(idx-1+items.length)%items.length]; if(prev) prev.focus(); }
-	  });
-	})();
-	</script>
 </body>
 
 </html>
