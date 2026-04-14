@@ -1,20 +1,32 @@
-/* styles.css - Estilos para landing de BellezaPro */
 
 :root {
-  /* Paleta accesible (WCAG AA) */
-  --bg: #ffffff;                 /* fondo */
-  --text: #0f172a;              /* texto principal (contraste ~17:1 vs blanco) */
-  --primary: #2563eb;           /* color primario (botones) — contraste ~4.6:1 vs blanco */
-  --primary-contrast: #ffffff;  /* texto sobre primary */
+  /* === Base AAA === */
+  --bg: #ffffff;                  /* fondo */
+  --text: #580334;                /* texto principal (AAA ✔) */
 
-  /* Mapeos para compatibilidad con reglas existentes */
+  /* === Primarios accesibles === */
+  --primary: #580334;             /* principal oscuro (AAA ✔) */
+  --primary-contrast: #ffffff;    /* texto sobre primary */
+
+  /* === Variantes de la paleta === */
+  --secondary: #8a004f;           /* rosa oscuro accesible */
+  --secondary-contrast: #ffffff;
+
+  /* === Colores originales (uso decorativo) === */
+  --accent: #ff76b6;              /* NO usar como texto sobre blanco */
+  --accent-soft: #ff89b6;         /* decorativo */
+  --accent-strong: #ff36ab;       /* hover / bordes */
+
+  /* === Mapeos */
   --color-bg: var(--bg);
   --color-primary: var(--primary);
-  --color-secondary: #FF36AB;
-  --color-tertiary: var(--color-primary);
-  --color-accent: #FFB8DE;
+  --color-secondary: var(--secondary);
+  --color-tertiary: var(--primary);
+  --color-accent: var(--accent);
   --color-cta: var(--primary);
-  --muted: #666;
+
+  /* === Texto secundario === */
+  --muted: #6b7280;               /* gris accesible */
 }
 
 * {
