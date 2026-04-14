@@ -21,11 +21,23 @@
 			</div>
 			<nav role="navigation" aria-label="Menú principal">
 				<ul>
-					<li><a href="productos.html">Productos</a>
-						<ul>
-							<li><a href="productos.html#marcas">Marcas</a></li>
-							<li><a href="productos.html#categorias">Categorías</a></li>
-							<li><a href="productos.html#populares">Populares</a></li>
+					<li class="has-submenu"><a href="productos.html" aria-haspopup="true" aria-expanded="false">Productos</a>
+						<ul class="submenu" aria-label="Submenú de productos">
+							<li>
+								<form action="productos.html#marcas" method="get">
+									<button type="submit" class="submenu-button">Marcas</button>
+								</form>
+							</li>
+							<li>
+								<form action="productos.html#categorias" method="get">
+									<button type="submit" class="submenu-button">Categorías</button>
+								</form>
+							</li>
+							<li>
+								<form action="productos.html#populares" method="get">
+									<button type="submit" class="submenu-button">Populares</button>
+								</form>
+							</li>
 						</ul>
 					</li>
 					<li><a href="#promociones">Promociones</a></li>
