@@ -16,21 +16,27 @@
 		<div class="container">
 			<div class="logo">
 				<a href="/" aria-label="Inicio - Tienda de Belleza y Peluquería">
-					<img src="images/logo central.jpg" alt="" aria-hidden="true">
-					Mimi Store
+					<img src="images/logo 3.0.png" alt="" aria-hidden="true">
 				</a>
 			</div>
 			<nav role="navigation" aria-label="Menú principal">
-				<ul>
-					<li><a href="productos.html">Productos</a></li>
-					<li><a href="#promociones">Promociones</a></li>
-					<li><a href="#beneficios">Beneficios</a></li>
-					<li><a href="#contacto">Contacto</a></li>
+				<ul class="nav-list">
+					<li class="nav-item has-menu">
+						<button id="productos-button" class="nav-button" aria-haspopup="true" aria-expanded="false" aria-controls="productos-menu">Productos</button>
+						<ul id="productos-menu" class="dropdown-menu" role="menu" aria-labelledby="productos-button" hidden>
+							<li role="none"><a role="menuitem" href="productos.html">Todos los productos</a></li>
+							<li role="none"><a role="menuitem" href="productos.html#shampoo">Shampoo</a></li>
+							<li role="none"><a role="menuitem" href="productos.html#acondicionadores">Acondicionadores</a></li>
+						</ul>
+					</li>
+					<li class="nav-item"><a href="#promociones">Promociones</a></li>
+					<li class="nav-item"><a href="#beneficios">Beneficios</a></li>
+					<li class="nav-item"><a href="#contacto">Contacto</a></li>
 				</ul>
 			</nav>
 		</div>
 	</header>
-aaaaaaaaaaaaaa
+
 	<div class="carousel">
 		<div class="group">
 			<div class="card"><img src="images/logo_loreal.jpg" alt="Logo Loreal" /></div>
@@ -53,10 +59,14 @@ aaaaaaaaaaaaaa
 	<main id="main" role="main">
 		<section id="hero" class="hero" aria-label="Hero" tabindex="-1">
 			<div class="container">
-				<h1>Productos profesionales para peluquería y cuidado personal</h1>
-				<p>Encuentra fórmulas profesionales, herramientas y accesorios seleccionados para salones y entusiastas
-					del cuidado personal. Calidad garantizada y asesoría especializada.</p>
+				<h1> ¡Bienvenido a Mimi Store!</h1>
 				<p>
+					Productos <b>profesionales</b> para <b>peluquería</b> y <b>cuidado personal</b>.
+				</p>
+				<p> 
+					Encuentra fórmulas profesionales, herramientas y accesorios seleccionados para salones y entusiastas
+					del cuidado personal. Calidad garantizada y asesoría especializada.</p>
+				</p>
 					<a class="cta" href="productos.html">Comprar ahora</a>
 				</p>
 			</div>
@@ -127,13 +137,53 @@ aaaaaaaaaaaaaa
 		<div class="container">
 			<h2 id="contacto-title">Contacto</h2>
 			<address>
-				<div>Tel: <a href="tel:+34123456789">+34 123 456 789</a></div>
-				<div>Email: <a href="mailto:info@bellezapro.example">info@bellezapro.example</a></div>
-				<div>Dirección: Calle Ejemplo 123, Ciudad</div>
+				<div>Tel: <a href="tel:+56975368889">+56 9 7536 8889</a></div>
+				<div>Email: <a href="mailto:info.mimistore@gmail.com">info.mimistore@gmail.com</a></div>
+				<div>Dirección: Calle principal 123, Santiago</div>
 			</address>
-			<p>© <span id="year">2026</span> BellezaPro — Todos los derechos reservados.</p>
+			<p>© <span id="year">2026</span> Mimi Store — Todos los derechos reservados.</p>
 		</div>
 	</footer>
+
+	<script>
+	// Accessible dropdown for Productos
+	(function(){
+	  const btn = document.getElementById('productos-button');
+	  const menu = document.getElementById('productos-menu');
+	  if (!btn || !menu) return;
+	  const toggle = (show) => {
+	    const isOpen = typeof show === 'boolean' ? show : menu.hasAttribute('hidden') ? true : false;
+	    if (isOpen) {
+	      menu.removeAttribute('hidden');
+	      btn.setAttribute('aria-expanded','true');
+	      // focus first item
+	      const first = menu.querySelector('[role="menuitem"]');
+	      if (first) first.focus();
+	    } else {
+	      menu.setAttribute('hidden','');
+	      btn.setAttribute('aria-expanded','false');
+	      btn.focus();
+	    }
+	  };
+	  btn.addEventListener('click', (e) => { e.preventDefault(); toggle(); });
+	  // close on outside click
+	  document.addEventListener('click', (e)=>{
+	    if (!btn.contains(e.target) && !menu.contains(e.target)) toggle(false);
+	  });
+	  // keyboard support
+	  btn.addEventListener('keydown', (e)=>{
+	    if (e.key === 'ArrowDown' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(true); }
+	    if (e.key === 'Escape') toggle(false);
+	  });
+	  menu.addEventListener('keydown', (e)=>{
+	    const items = Array.from(menu.querySelectorAll('[role="menuitem"]'));
+	    const idx = items.indexOf(document.activeElement);
+	    if (e.key === 'Escape') { toggle(false); }
+	    else if (e.key === 'ArrowDown') { e.preventDefault(); const next = items[(idx+1)%items.length]; if(next) next.focus(); }
+	    else if (e.key === 'ArrowUp') { e.preventDefault(); const prev = items[(idx-1+items.length)%items.length]; if(prev) prev.focus(); }
+	  });
+	})();
+	</script>
 </body>
 
 </html>
