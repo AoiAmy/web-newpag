@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-widht, initial-scale=1.0">
+    <title>Mi Registro</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <form id="registroForm">
+        <h3>Registro de Usuarios</h3>
+        <input type="text" id="usuario" placeholder="Nombre Usuario">
+        <input type="email" id="correo" placeholder="Correo electrónico">
+        <input type="password" id="password1" placeholder="Contraseña">
+        <input type="password" id="password2" placeholder="Confirmación Contraseña">
+        <button type="submit">Registrarse</button>
+        <p id="mensaje"></p>
+    </form>
+    <script src="app.js"></script>
+</body>
+</html>
+//A. Formulario de Registro
+Campos: Usuario, Email, Contraseña y Confirmación de Contraseña.
+●	Validar que el email tenga un formato válido (regex).
+●	Asegurar que la contraseña tenga al menos 8 caracteres.
+●	Verificar que ambas contraseñas ingresadas sean idénticas.
