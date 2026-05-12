@@ -327,6 +327,19 @@ address {
   display: block;
 }
 
+/* Fix: keep bootstrap carousel images proportional (no deform) */
+#carouselExampleIndicators .carousel-inner {
+  max-height: 320px;
+  overflow: hidden;
+}
+#carouselExampleIndicators .carousel-item img {
+  width: 100%;
+  height: 320px; /* adjust as needed */
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
 @media (min-width: 900px) {
   .card {
     flex: 0 0 16rem;
